@@ -190,6 +190,75 @@ print(str)
 
 [リンク: インターネットの仕組み](http://www.soumu.go.jp/main_sosiki/joho_tsusin/security/basic/service/02.html)
 
+## Webの基本はHTML
+みなさんインターネットを使ってYahooやYoutubeなどのサイトをサイトを使っていると思います。サイトの表示には「HTML」という言語を使います。実際のサイトで確かめてみましょう。
+
+[リンク: Yahoo Japan](http://www.yahoo.co.jp/)
+
+マウスを右クリックして「ページのソースを表示」を選んでください。サイトの実際の内容が見てとてます。
+
+ちょっとしたいたずらをしてみましょう。個別の文章を選んで右クリックで検証を選びます。
+
+## ホームページを作ってみる
+我々も簡単なホームページを作ってみましょう。次のように打ち込んだ後、```test.html```で保存してください。この形がHTML文章の最も基本的な話になります。
+
+```test.html
+<html>
+  <head>
+    ここに各種設定が入る
+  </head>
+
+  <body>
+  　ここに本文が入る
+  </body>
+</html>
+```
+## 見出しをつける
+文字列を```<h1> </h1>```で囲うと見出しになります。数字を大きくすると文字はだんだん小さくなります。
+
+```test.html
+<html>
+  <head>
+    ここに各種設定が入る
+  </head>
+
+  <body>
+  　<h1>タイトル</h1>
+  　<h2>章</h2>
+  　<h3>補足</h3>
+  　
+  </body>
+</html>
+```
+
+## リンクを付ける
+指定したページに飛んで行くためのリンクは***<a>***タグを使います。
+
+```test.html
+<html>
+  <head>
+    ここに各種設定が入る
+  </head>
+
+  <body>
+  　<a href="https://www.google.co.jp"/>ここをクリック！</a>
+  </body>
+</html>
+```
+
+## 画像を表示する。
+画像を表示するときは<img>タグを使います。以下のようにします。
+
+```test.html
+<html>
+  <head>
+    
+  </head>
+  <body>
+  　<img src="pica.jpg"/>
+  </body>
+</html>
+```
 
 
 # Google Mapを使う
@@ -211,18 +280,6 @@ print(str)
 
 # Google Mapを使う
 
-'''index.html
-<pre>
-&lt;html&gt;
- &lt;head&gt;
-  ここには設定を書く
- &lt;/head&gt;
- &lt;body&gt;
-  ここに本文を書く
- &lt;/body&gt;
-&lt;/html&gt;
-</pre>
-'''
 
 
 
