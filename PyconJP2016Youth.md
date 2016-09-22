@@ -278,15 +278,40 @@ print(str)
 「自動運転」と「ポケモンGo」にはひとつ共通点があります。それは地図データを多用しているということです。とくにスマートフォンが普及してからはアプリやウェブ使って手元で地図を利用できるようになりました。このワークショップでは「Google Map」を題材にして、もっと自在に地図データで遊ぶことを目的にしています。
 
 
-# Google Mapを使う
+## Google Mapをまず表示してみる。
+まずGoogle Mapを表示させてみます。なお詳細なレファレンスは下記のリンクあります。
+
+[グーグル・マップレファレンス](https://developers.google.com/maps/documentation/javascript/tutorial?hl=ja)
 
 
+```
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Google Map</title>
+        <script src="http://maps.google.com/maps/api/js?sensor=true&language=ja"></script>
+        <style>
+            #map {
+                width: 100%;
+                height:100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script>
+            var latlng = new google.maps.LatLng(35.66,139.69);
+            var options ={
+                zoom: 15,
+                center: latlng,
+                //navigationControl: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            } 
+            var map = new google.maps.Map(document.getElementById("map"),options)
+         
+                                
+        </script>
+    </body>
+</html>
+```
 
-
-# データを集めてくる
-
-# データを整形する
-
-# Google Mapにデータを描き込む
-
-#
