@@ -79,10 +79,113 @@ print(list1[2])
 print(list1[3])
 ```
 
-# 繰り返しを使う
+## 繰り返しを使う
 コンピュータのいいところは仕事をしても疲れないことです。とくに人間がうんざりするような繰り返しでも平気です。pythonで繰り返しは以下のようにやります。
 
+```
+for i in range(5):
+    print("こんにちは")
+```
 
+実はiには0から4までの数字が順番に入っていきます。確かめてみましょう。
+
+```
+for i in range(5):
+    print(i)
+```
+
+range(5)はリストで置き換えることが可能です。
+
+```
+for i in ["東","西","南","北"]:
+    print(i)
+```
+
+
+
+## モジュールを使ってみる
+Pythonでは他の人が作った便利なプログラムを使うことができます。このようなプログラムを***モジュール***と言います。他のプログラミング言語では***ライブラリ***と呼ばれることもあります。ここでは画像処理用のモジュールであるPILを使ってみます。
+
+
+```
+from PIL import Image
+
+image = Image.open("tento_face150.png")
+image.show()
+```
+
+## アスキーアートを作ってみる
+いままで文法を使ってアスキーアートを作ってみます。以下のプログラムをコピーして、pyconjp2016のフォルダに保存してください。
+
+```
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Sep 13 16:04:49 2016
+
+@author: taka2
+"""
+
+'''
+ASCII Art maker
+Creates an ascii art image from an arbitrary image
+Created on 7 Sep 2009
+
+@author: Steven Kay
+'''
+
+from PIL import Image
+import random
+from bisect import bisect
+
+# greyscale.. the following strings represent
+# 7 tonal ranges, from lighter to darker.
+# for a given pixel tonal level, choose a character
+# at random from that range.
+
+greyscale = [
+            " ",
+            " ",
+            ".,-",
+            "_ivc=!/|\\~",
+            "gjez2]/(YL)t[+T7Vf",
+            "mdK4ZGbNDXY5P*Q",
+            "W8KMA",
+            "#%$"
+            ]
+
+# using the bisect class to put luminosity values
+# in various ranges.
+# these are the luminosity cut-off points for each
+# of the 7 tonal levels. At the moment, these are 7 bands
+# of even width, but they could be changed to boost
+# contrast or change gamma, for example.
+
+zonebounds=[36,72,108,144,180,216,252]
+
+# open image and resize
+# experiment with aspect ratios according to font
+
+im=Image.open("tento_face150.png")
+im=im.resize((100, 100),Image.BILINEAR)
+im=im.convert("L") # convert to mono
+
+# now, work our way over the pixels
+# build up str
+
+str=""
+for y in range(0,im.size[1]):
+    for x in range(0,im.size[0]):
+        lum=255-im.getpixel((x,y))
+        row=bisect(zonebounds,lum)
+        possibles=greyscale[row]
+        str=str+possibles[random.randint(0,len(possibles)-1)]
+    str=str+"\n"
+
+print(str)
+```
+
+# Google Mapを使う
+## 地図データが熱い!!
 最近世界中で自動運転の研究が盛んです。世界中の自動車メーカーが自動運転車の開発に取り組んでいますが、現在はGoogleが一歩先に行っているようです。2012年ごろからテストが始まり、最近まで190万キロメートル走っても無事故でした。（残念ながら2016年２月にバスと接触事故を起こしています。）
 
 |グーグルカー|
